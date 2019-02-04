@@ -7,7 +7,10 @@ package linkedLists;
  *
  */
 
+import java.lang.reflect.Array;
+
 import linkedLists.LinkedList;
+
 
 
 public class SLFLList<E> implements LinkedList<E>
@@ -140,6 +143,26 @@ public class SLFLList<E> implements LinkedList<E>
 			counter++;
 		}
 		return nuevo;
+	}
+	
+	public <T> T[] toArray(T[] a) {
+		SNode<E> current= (SNode<E>) this.getFirstNode();
+		
+		if(this.length> a.length) {
+			a = (T[]) Array.newInstance(a.getClass().getComponentType(), this.length);
+		}
+		else {
+			for (int i = this.length; i < a.length; i++) {
+				a[i]=null;
+			}
+		}
+		int counter=0;
+		while(counter != this.length-1) {
+			a[counter]= (T) current.getElement();
+			current= current.getNext();
+			counter++;
+		}
+		return a;
 	}
 	
 	

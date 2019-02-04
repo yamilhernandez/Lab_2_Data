@@ -86,7 +86,7 @@ public class DLDHDTList<E> implements LinkedList<E> {
 
 	public void removeNode(Node<E> target) {
 		DNode<E> temp = (DNode<E>) target;
-		temp.prev.setNext(temp.next );
+		temp.prev.setNext(temp.next);
 		temp.next.setPrev(temp.prev);
 		temp.cleanLinks();
 		length--;
@@ -139,9 +139,27 @@ public class DLDHDTList<E> implements LinkedList<E> {
 			counter++;
 		}
 		return nuevo;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public <T> T[] toArray(T[] a) {
+		DNode<E> current= (DNode<E>) this.getFirstNode();
 		
-		
-		
+		if(this.length> a.length) {
+			a = (T[]) Array.newInstance(a.getClass().getComponentType(), this.length);
+		}
+		else {
+			for (int i = this.length; i < a.length; i++) {
+				a[i]=null;
+			}
+		}
+		int counter=0;
+		while(counter != this.length-1) {
+			a[counter]= (T) current.getElement();
+			current= current.getNext();
+			counter++;
+		}
+		return a;
 	}
 
 	/**
