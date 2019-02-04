@@ -12,7 +12,7 @@ public class IndexListTester {
 	 * @param args
 	 */
 	public static void main(String[] args) {	
-		listTester("Testing the singly linked list (SLList): ",
+		listTester("Testing the singly linked list (SLList) ",
 				new LLIndexList<Integer>(new DLDHDTList<Integer>()));	
 	}
 		
