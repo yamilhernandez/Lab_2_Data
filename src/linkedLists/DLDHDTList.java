@@ -1,5 +1,7 @@
 package linkedLists;
 
+import java.lang.reflect.Array;
+
 public class DLDHDTList<E> implements LinkedList<E> {
 	private DNode<E> header, trailer; 
 	private int length; 
@@ -123,6 +125,23 @@ public class DLDHDTList<E> implements LinkedList<E> {
 	    } finally {
 	        super.finalize();
 	    }
+	}
+	
+	
+	
+	public Object[] toArray() {
+		Object[] nuevo = new Object[this.length];
+		DNode<E> current= (DNode<E>) this.getFirstNode();
+		int counter=0;
+		while(counter != this.length-1) {
+			nuevo[counter]= current.getElement();
+			current= current.getNext();
+			counter++;
+		}
+		return nuevo;
+		
+		
+		
 	}
 
 	/**

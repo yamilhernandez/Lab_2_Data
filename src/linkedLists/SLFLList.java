@@ -9,6 +9,7 @@ package linkedLists;
 
 import linkedLists.LinkedList;
 
+
 public class SLFLList<E> implements LinkedList<E>
 {
 
@@ -129,6 +130,19 @@ public class SLFLList<E> implements LinkedList<E>
 	public Node<E> createNewNode() {
 		return new SNode<E>();
 	}
+	public Object[] toArray() {
+		Object[] nuevo = new Object[this.length];
+		SNode<E> current= (SNode<E>) this.getFirstNode();
+		int counter=0;
+		while(counter != this.length-1) {
+			nuevo[counter]= current.getElement();
+			current= current.getNext();
+			counter++;
+		}
+		return nuevo;
+	}
+	
+	
 
 
 	///////////////////////////////////////////////////
